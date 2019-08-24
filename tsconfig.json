@@ -1,0 +1,50 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": false,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "target": "es6",
+        "jsx": "react",
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "noImplicitThis": true,
+        "importHelpers": true,
+        "checkJs": false,
+        "lib": [
+            "es5",
+            "es6",
+            "dom",
+            "esnext",
+            "es2015.core",
+            "es2015.collection",
+            "es2015.generator",
+            "es2015.iterable",
+            "es2015.promise",
+            "es2015.proxy",
+            "es2015.reflect",
+            "es2015.symbol",
+            "es2015.symbol.wellknown",
+            "esnext.asynciterable"
+        ],
+        "sourceMap": true,
+        "baseUrl": "src",
+        "paths": {
+            "models/*":["models/*"],
+            "utils/*": ["utils/*"],
+            "component/*": ["component/*"],
+            "assets/*": ["assets/*"],
+            "images/*": ["assets/images/*"],
+            "app/*": ["app/*"],
+            "api/*": ["api/*"],
+            "mapi/*": ["mapi/*"],
+            "mixin_scss":["pages/mixin.scss"],
+            "mixin_less":["pages/mixin.less"],
+            "constant/*": ["constant/*"],
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "build",
+    ]
+}
