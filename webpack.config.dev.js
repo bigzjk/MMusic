@@ -25,6 +25,7 @@ module.exports = {
         hot: true,
         historyApiFallback: true,
         // proxy:{}
+        stats: 'errors-only' // 构建日志
     },
     module: {
         rules: [

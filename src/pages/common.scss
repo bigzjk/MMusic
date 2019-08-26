@@ -1,0 +1,358 @@
+@charset "utf-8";
+/*css reset*/
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    margin: 0;
+    padding: 0;
+}
+body,
+button,
+input,
+select,
+textarea {
+    font: normal 28px/1.5 "Heiti SC", "Arial", "Lucida Grande", Verdana, STXhei, "Microsoft YaHei", "hei";
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+iframe {
+    display: block;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 600;
+}
+
+h4,
+h5,
+h6 {
+    font-weight: 500;
+}
+h1{
+  font-size: 40px;
+}
+h2{
+  font-size: 36px;
+}
+h3{
+  font-size: 32px;
+}
+
+address,
+cite,
+dfn,
+em,
+var,
+i {
+    font-style: normal;
+    font-weight: normal;
+}
+
+dfn {
+    font-family: Arial;
+}
+
+ul,
+ol,
+ul li,
+ol li {
+    list-style: none;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+a:hover {
+    transition: color .2s linear;
+}
+
+fieldset,
+img,
+button,
+input {
+    border: 0 none;
+    vertical-align: middle;
+}
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%;
+}
+.iphoneX{
+    padding-bottom: constant(safe-area-inset-bottom) !important;
+    padding-bottom: env(safe-area-inset-bottom) !important;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*-webkit-appearance改变按钮和其他控件的外观，使其类似于原生控件*/
+
+input {
+    appearance: none;
+    border-radius: 0;
+}
+
+body {
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto !important;
+    background: #f9f9f9;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-font-smoothing: antialiased;
+    /*user-select: none;*/
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
+    position: relative;
+    color: #000;
+}
+
+:focus {
+    outline: none;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.overflow {
+    overflow: hidden;
+}
+
+.center {
+    text-align: center;
+}
+
+/*flex布局*/
+
+.flex-wrap {
+    display: flex;
+}
+
+.flex1 {
+    flex: 1
+}
+
+.flex2 {
+    flex: 2;
+}
+
+.flex3 {
+    flex: 3;
+}
+
+.flex4 {
+    flex: 4;
+}
+
+.flex5 {
+    flex: 5;
+}
+
+.flex-vertical {
+    @extend .flex-wrap;
+    flex-direction: column;
+}
+
+.flex-center {
+    @extend .flex-wrap;
+    justify-content: center;
+}
+
+.flex-middle {
+    @extend .flex-wrap;
+    align-content: center
+}
+
+.flex-between {
+    @extend .flex-wrap;
+    justify-content: space-between;
+}
+
+.flex-around {
+    @extend .flex-wrap;
+    justify-content: space-around;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}
+
+.padTop90 {
+    padding-top: 90px;
+}
+
+/*请提示字符串换行*/
+
+.am-toast-notice-content .am-toast-text {
+    word-wrap: break-word;
+}
+
+/*截取*/
+
+// 元素可以设置宽度才可应用省略号
+%ellipsis-basic {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin ellipsis($width:100%) {
+    @extend %ellipsis-basic;
+    width: $width;
+}
+
+//多行省略
+@mixin line-clamp($line:2) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $line;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+.line-clamp-1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}
+/*清浮动*/
+
+.clearfix {
+    background: red;
+}
+
+/* 阻止窗口滚动 end*/
+
+html #__vconsole .vc-switch{
+  bottom:1rem;
+}
+
+/*公用input placeholder 的颜色，统一颜色*/
+input,textarea {
+    &::-webkit-input-placeholder{
+        color: #cccccc!important;
+    }
+    &:-moz-placeholder{
+        color: #cccccc!important;
+    }
+    &::-moz-placeholder{
+        color: #cccccc!important;
+    }
+    &::-ms-input-placeholder{
+        color: #cccccc!important;
+    }
+}
+
+.theme-red{
+    color: #c13b38!important;
+}
+.theme-vip{
+    color: #AE8844;
+}
+
+// 箭头右边→
+.arr-right{
+    position: relative;
+}
+.arr-right::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    width: 12px;
+    height: 12px;
+    border-top: 1PX solid #999;
+    border-right: 1PX solid #999;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+/* 通用sticky样式 */
+.sticky-top-0{
+    position: sticky;
+    top: 0;
+}

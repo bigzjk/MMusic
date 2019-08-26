@@ -7,12 +7,16 @@ import store from '../redux/store'
 
 import Home from "./home";
 import Search from "./search";
+import Main from "./main";
 
+import './common.scss'
 const routes = () => (
   <div className="primary-layout">
     <main>
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route path="/" exact component={Main} />
+        <Route path="/main" component={Main} />
+        <Route path="/home" component={Home} />
         <Route path="/search" component={Search} />
       </Switch>
     </main>
