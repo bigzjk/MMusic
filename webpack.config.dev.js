@@ -62,6 +62,25 @@ module.exports = {
                 ]
             },
             {
+                test: /\.less$/,
+                // use: ['style-loader', 'css-loader', 'sass-loader']
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'less-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => [
+                                require('autoprefixer')({
+                                    overrideBrowserslist: ['last 2 version', '>0.1%']
+                                })
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
                 test: /\.(png|jpg|jpeg|gif|svg|tiff)$/,
                 use: {
                     loader: 'url-loader',

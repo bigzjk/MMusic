@@ -1,7 +1,7 @@
 import addAction from './add'
-import postAction from './getPost'
+import getBanner from './home'
 
 export default {
   addAction,
-  postAction
+  getBanner
 }

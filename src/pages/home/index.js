@@ -1,6 +1,7 @@
 import React from 'react';
 // import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
+import {Toast, Carousel} from 'antd-mobile'
 import connect from '../../utils/connect'
 import Demo from './demo'
 
@@ -12,14 +13,41 @@ class Home extends React.Component {
         // console.log('props', this.props)
     }
     componentDidMount() {
-        console.log('this.props.actions', this.props.actions)
-        this.props.actions.postAction()
+        Toast.loading('加载中...')
+        this.props.actions.getBanner().then(resp=>{
+            console.log('resp', resp)
+            Toast.hide()
+        })
     }
     render(){
-        // console.log('=====', this.props)
+        let { homeReducer } = this.props
+        let banner = homeReducer.bannerList
         return( 
             <div className="home">
-                react
+                <Carousel
+                    autoplay={false}
+                    infinite
+                    beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
+                    afterChange={index => console.log('slide to', index)}
+                    >
+                    {banner.map(val => (
+                        <a
+                        key={val}
+                        href={val.linkData.linkUrl}
+                        >
+                        <img
+                            src={val.linkData.linkPicUrl}
+                            alt=""
+                            style={{ width: '100%', verticalAlign: 'top' }}
+                            onLoad={() => {
+                            // fire window resize event to change height
+                            window.dispatchEvent(new Event('resize'));
+                            this.setState({ imgHeight: 'auto' });
+                            }}
+                        />
+                        </a>
+                    ))}
+                    </Carousel>
                 <Demo />
                 <p >
                     goback Index11

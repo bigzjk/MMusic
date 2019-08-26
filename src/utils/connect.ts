@@ -8,7 +8,7 @@ import actionsLoc from '../redux/actions'
 const mapStateToProps = (state) =>{
     return {
         // props: state
-        postReducer: state.postReducer
+        homeReducer: state.homeReducer
     }
 }
 
