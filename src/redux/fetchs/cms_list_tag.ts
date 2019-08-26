@@ -1,3 +1,4 @@
-import axios from 'axios'
+// import axios from 'axios'
+import request from '../../utils/request'
 
-export const cmsListTag = () => axios.get('http://127.0.0.1:3456/cms_list_tag?nid=23831003&type=2006&pageNo=0&pageSize=10')
+export const cmsListTag = () => request({url: 'cms_list_tag?nid=23831003&type=2006&pageNo=0&pageSize=10'})

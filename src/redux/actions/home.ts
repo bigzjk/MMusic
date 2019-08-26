@@ -1,12 +1,12 @@
 
 import {cmsListTag} from '../fetchs/cms_list_tag'
 
-export default function getBanner (dispatch) {
+export default function getBanner () {
     return (dispatch) =>cmsListTag().then(resp => {
         dispatch({
             type: 'RECEIVE_HOME_BANNER',
-            postInfo: resp.data
+            postInfo: resp
         })
-        return resp.data
+        return resp
     })
 }

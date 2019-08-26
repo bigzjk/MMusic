@@ -5,7 +5,6 @@ import { Route, Switch, BrowserRouter } from "react-router-dom";
 
 import store from '../redux/store'
 
-
 import Home from "./home";
 import Search from "./search";
 import Main from "./main";
@@ -16,7 +15,7 @@ const routes = () => (
   <div className="primary-layout">
     <main>
       <Switch>
-        <Route path="/" exact component={Main} />
+        <Route path="/" exact component={Home} />
         <Route path="/main" component={Main} />
         <Route path="/home" component={Home} />
         <Route path="/search" component={Search} />

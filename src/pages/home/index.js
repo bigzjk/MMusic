@@ -10,6 +10,10 @@ import './index.scss'
 class Home extends React.Component {
     constructor(props){
         super(props)
+        this.state = {
+            val: '',
+            focusInp: false
+        }
         // console.log('props', this.props)
     }
     componentDidMount() {
@@ -19,7 +23,17 @@ class Home extends React.Component {
             Toast.hide()
         })
     }
+    onChangeInp = (e) => {
+        let val = e.target.value.trim()
+        console.log(val)
+        this.setState({
+            val
+        })
+
+    }
+
     render(){
+        const { val, focusInp } = this.state
         let { homeReducer } = this.props
         let banner = homeReducer.bannerList
         return( 
@@ -29,7 +43,10 @@ class Home extends React.Component {
                     infinite
                     beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
                     afterChange={index => console.log('slide to', index)}
-                    >
+                    dotActiveStyle={{
+                        background: '#e40077'
+                    }}
+                >
                     {banner.map(val => (
                         <a
                         key={val}
@@ -47,12 +64,16 @@ class Home extends React.Component {
                         />
                         </a>
                     ))}
-                    </Carousel>
+                </Carousel>
+                <div className="index-search">
+                    <input type="text" onChange={this.onChangeInp} ref={(e) => this.inpRef = e} value={val} />
+                    {val ? null : <div className="search-prompt" onClick={()=>this.inpRef.focus()}>
+                        <img alt="" className="prompt-img" src="http://mcontent.10086.cn/web/fs/media/p/154/353/11161/image/20180627/1341438.png" />
+                        <span className="prompt-text">搜索</span>
+                    </div>}
+                </div>
                 <Demo />
-                <p >
-                    goback Index11
-                </p>
-                <img src='https://asset-stage.yit.com/SECOND_FLOOR/IMAGE/01f6e3a1a275ae2564d9c651d81d3ad2_600X600.jpeg?x-oss-process=image/resize,m_mfit,limit_1,w_200,h_200' />
+
                 <Link to="./search">gosearch</Link>
             </div>
         )
