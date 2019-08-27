@@ -1,4 +1,5 @@
 ### 本项目需要结合migu-api一起使用
+(migu-api传送门)[https://github.com/bigzjk/miguMusic-api/]
 ```
    下载咪咕api
    $ git clone https://github.com/bigzjk/miguMusic-api.git
