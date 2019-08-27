@@ -8,9 +8,10 @@
         "allowJs": true,
         "allowSyntheticDefaultImports": true,
         "experimentalDecorators": true,
-        "noImplicitThis": true,
+        "noImplicitThis": false,
         "importHelpers": true,
         "checkJs": false,
+        "strict": false,
         "lib": [
             "es5",
             "es6",

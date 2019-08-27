@@ -1,9 +1,9 @@
 import React from 'react';
 // import ReactDOM from 'react-dom'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import {Toast, Carousel} from 'antd-mobile'
-import connect from '../../utils/connect'
-import Demo from './demo'
+import connect from 'utils/connect'
+import SongItemList from 'components/SongItemList'
 
 import './index.scss'
 @connect()
@@ -25,7 +25,6 @@ class Home extends React.Component {
     }
     onChangeInp = (e) => {
         let val = e.target.value.trim()
-        console.log(val)
         this.setState({
             val
         })
@@ -33,7 +32,7 @@ class Home extends React.Component {
     }
 
     render(){
-        const { val, focusInp } = this.state
+        const { val } = this.state
         let { homeReducer } = this.props
         let banner = homeReducer.bannerList
         return( 
@@ -72,9 +71,7 @@ class Home extends React.Component {
                         <span className="prompt-text">搜索</span>
                     </div>}
                 </div>
-                <Demo />
-
-                <Link to="./search">gosearch</Link>
+                {banner.length > 0 && <SongItemList title="推荐歌单" />}
             </div>
         )
     }
