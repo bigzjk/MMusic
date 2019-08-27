@@ -1,0 +1,52 @@
+### 本项目需要结合migu-api一起使用
+```
+   下载咪咕api
+   $ git clone https://github.com/bigzjk/miguMusic-api.git
+```
+### 启动步骤
+```js
+1. 运行migu-api,启动server服务，拿到接口数据
+    cd miguMusic-api
+    $ yarn 
+    $ yarn run nodedev
+2. 运行当前项目
+    cd MMusic
+    $ yarn
+    $ yarn run dev
+    
+```
+### 项目介绍
+
+```js
+├── dist
+├── node_modules
+├── public
+│   └── index.html
+├── src
+│   ├── assets
+│   ├── components
+│   └── pages
+│       ├── home
+│       └── main
+│       └── index.jsx
+│       └── common.scss
+├── package.json
+├── webpack.config.dev.js
+├── webpack.config.prod.js
+ 
+    手动搭建的webpack.config配置，坑多慢慢改
+    使用了react的class组件和hooks组件
+    
+用到的技术大概有
+webpack4
+typescript
+react16+
+react-router
+redux
+react-redux
+antd-mobile
+
+```
+
+### 目的
+练习hooks和ts
