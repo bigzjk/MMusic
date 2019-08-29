@@ -1,4 +1,5 @@
 ### 本项目需要结合migu-api一起使用
+[migu-api传送门](https://github.com/bigzjk/miguMusic-api/)
 ```
    下载咪咕api
    $ git clone https://github.com/bigzjk/miguMusic-api.git
@@ -30,12 +31,16 @@
 │       └── main
 │       └── index.jsx
 │       └── common.scss
+│   └── utils
+│       └── connect.ts
+│       └── request.ts
 ├── package.json
 ├── webpack.config.dev.js
 ├── webpack.config.prod.js
  
-    手动搭建的webpack.config配置，坑多慢慢改
-    使用了react的class组件和hooks组件
+手动搭建的webpack.config配置，坑多慢慢改🤣
+
+使用了react的class组件和hooks组件
     
 用到的技术大概有
 webpack4
