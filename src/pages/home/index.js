@@ -4,6 +4,7 @@ import React from 'react';
 import {Toast, Carousel} from 'antd-mobile'
 import connect from 'utils/connect'
 import SongItemList from 'components/SongItemList'
+// import {Button} from 'components/Button'
 
 import './index.scss'
 @connect()
@@ -72,6 +73,7 @@ class Home extends React.Component {
                     </div>}
                 </div>
                 {banner.length > 0 && <SongItemList title="推荐歌单" />}
+                {/* <Button /> */}
             </div>
         )
     }

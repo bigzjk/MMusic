@@ -9,7 +9,6 @@ const store = createStore(
     rootReducer,
     compose(
         applyMiddleware(...[thunk]),
-        // ts-lint 
         composeWithDevTools()
     )
 )
