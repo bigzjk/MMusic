@@ -1,6 +1,7 @@
 import React, { useState, useEffect, createContext, useReducer } from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import Comp from './Comp'
+import './index.scss'
 function Index() {
     useEffect(()=>{
         console.log('进来了,Index')

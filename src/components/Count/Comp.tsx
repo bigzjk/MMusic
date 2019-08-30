@@ -3,6 +3,7 @@ import { CounterContext } from './index'
 const Comp = () => {
     // ()
     let count = useContext(CounterContext)
+    console.log('count', count)
     return (
         <div>
             comp{count}

@@ -4,7 +4,7 @@ import React from 'react';
 import {Toast, Carousel} from 'antd-mobile'
 import connect from 'utils/connect'
 import SongItemList from 'components/SongItemList'
-// import {Button} from 'components/Button'
+// import SongItemListBox from 'components/SongItemListBox'
 
 import './index.scss'
 @connect()
@@ -20,7 +20,7 @@ class Home extends React.Component {
     componentDidMount() {
         Toast.loading('加载中...')
         this.props.actions.getBanner().then(resp=>{
-            console.log('resp', resp)
+            // console.log('resp', resp)
             Toast.hide()
         })
     }
@@ -73,7 +73,6 @@ class Home extends React.Component {
                     </div>}
                 </div>
                 {banner.length > 0 && <SongItemList title="推荐歌单" />}
-                {/* <Button /> */}
             </div>
         )
     }

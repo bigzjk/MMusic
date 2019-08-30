@@ -2,22 +2,22 @@ import React, { useState, useEffect, createContext, useReducer } from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import Comp from './Comp'
 function Index() {
-    useEffect(()=>{
-        console.log('进来了,Index')
-        return () => {
-            console.log('出去了,Index')
-        }
-    }, [])
+    // useEffect(()=>{
+    //     console.log('进来了,Index')
+    //     return () => {
+    //         console.log('出去了,Index')
+    //     }
+    // }, [])
     return <h1>IndexPage</h1>
 }
 
 function List() {
-    useEffect(()=>{
-        console.log('进来了m List')
-        return () => {
-            console.log('出去了， List')
-        }
-    })
+    // useEffect(()=>{
+    //     console.log('进来了m List')
+    //     return () => {
+    //         console.log('出去了， List')
+    //     }
+    // })
     return <h1>ListPage</h1>
 }
 
@@ -36,12 +36,13 @@ function Counter() {
         }
     }, 10)
     // const [count, setCount] = useState(1)
-    useEffect(()=>{
-        console.log('进来了')
-        return () => {
-            console.log('出去了')
-        }
-    })
+    // useEffect(()=>{
+    //     console.log('进来了')
+    //     return () => {
+    //         console.log('出去了')
+    //     }
+    // })
+    console.log('=========',count)
     return (
         <div>
             <h3>点击了{count}次</h3>
