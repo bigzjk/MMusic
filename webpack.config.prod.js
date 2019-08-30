@@ -6,16 +6,16 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
-    entry: './src/pages/inedx.tsx',
+    entry: './src/pages/index.tsx',
     mode: 'production',
-    devtool: 'cheap-module-eval-source-map',
+    // devtool: 'cheap-module-eval-source-map',
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle_[chunkhash:8].js'
     },
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: [".ts", ".tsx", ".js", ".json"],
+        extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
         alias: {
             pages: path.resolve(__dirname, 'src/pages/'),
             images: path.resolve(__dirname, 'src/assets/images/'),
@@ -115,6 +115,7 @@ module.exports = {
                 removeComments: false
             }
         }),
+        // new webpack.HotModuleReplacementPlugin(),
         new OptimizeCssAssetsWebpackPlugin({
             assetNameRegExp: /\.css$/g,
             cssProcessor: require('cssnano')

@@ -5,7 +5,7 @@ let { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-    entry: './src/pages/inedx.tsx',
+    entry: './src/pages/index.tsx',
     mode: 'development',
     devtool: 'cheap-module-eval-source-map',
     output: {

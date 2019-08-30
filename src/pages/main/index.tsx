@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext, useReducer } from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+// import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import Comp from './Comp'
 import './index.scss'
 function Index() {
@@ -53,7 +54,10 @@ function Counter() {
                 onClick={()=>dispatch({type: 'sub'})}
 
             >减少</div>
-            <Router>
+            <li><Link to="/list">列表页</Link></li>
+            <li><Link to="/">首页</Link></li>
+
+            {/* <Router>
                 <ul>
                     <li><Link to="/">首页</Link></li>
                     <li><Link to="/list">列表页</Link></li>
@@ -61,7 +65,7 @@ function Counter() {
                 <p>==================================</p>
                 <Route path="/" exact component={Index} />
                 <Route path="/list" component={List} />
-            </Router>
+            </Router> */}
             <CounterContext.Provider value={count}>
                 <Comp />
             </CounterContext.Provider>
