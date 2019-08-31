@@ -20,7 +20,8 @@ module.exports = {
             pages: path.resolve(__dirname, 'src/pages/'),
             images: path.resolve(__dirname, 'src/assets/images/'),
             utils: path.resolve(__dirname, 'src/utils/'),
-            components: path.resolve(__dirname, 'src/components/')
+            components: path.resolve(__dirname, 'src/components/'),
+            hooksRudecer: path.resolve(__dirname, 'src/hooksRudecer/')
         }
     },
     module: {
