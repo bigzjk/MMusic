@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 // import ReactDOM from 'react-dom'
 // import { Link } from 'react-router-dom'
 import {Toast, Carousel} from 'antd-mobile'
@@ -7,7 +7,7 @@ import SongItemList from 'components/SongItemList'
 // import SongItemListBox from 'components/SongItemListBox'
 
 import './index.scss'
-@connect()
+@connect('', '', '')
 class Home extends React.Component {
     constructor(props){
         super(props)
@@ -59,7 +59,6 @@ class Home extends React.Component {
                             onLoad={() => {
                             // fire window resize event to change height
                             window.dispatchEvent(new Event('resize'));
-                            this.setState({ imgHeight: 'auto' });
                             }}
                         />
                         </a>

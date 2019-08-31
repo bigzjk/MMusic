@@ -1,34 +1,34 @@
 import React, { createContext, useReducer } from 'react'
-import request from 'utils/request'
+import { RECEIVE_TUIJIANLIST } from 'hooksRudecer/tuijian'
+
+// 初始化state值
+let initState = {
+    tuijianList: []
+}
 export const ReducerBoxContext = createContext({
-    state: [],
-    dispatch:(info?:any) => {}
+    state: initState,
+    dispatch:(info: any) => {}
 })
 
-export const ReducerBoxReducer = props => {
+export const ReducerBoxReducer =  props => {
 
-    const reducer = (state, action) => {
+    const reducer =  (state = initState, action) => {
         switch(action.type){
-            case 'INDEX_TUIJIAN': {
-                const getResp = async () => {
-                    let res: any = await request({url:'client_play_list_tag'})
-                    let newlist = res.data.msg
-                    // setList(newlist)
-                    return newlist
-                };
-                let state = getResp()
-                // console.log('1111222')
-                return state
-
+            // 首页推荐歌单
+            case RECEIVE_TUIJIANLIST: {
+                return Object.assign({}, state, {
+                    tuijianList: action.tuijianList
+                })
+               
             }
             default:
                 return state
         }
     }
-    const [state, dispatch] = useReducer(reducer, [])
-    console.log('state-----', state)
+    const [state, dispatch] = useReducer(reducer, initState)
+    
     return (
-        <ReducerBoxContext.Provider value={{dispatch,state}}>
+        <ReducerBoxContext.Provider value={{dispatch, state}}>
             {props.children}
         </ReducerBoxContext.Provider>
     )

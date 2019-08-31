@@ -24,14 +24,14 @@ function mapDispatchToProps(dispatch, props) {
 
 // export default connect(mapStateToProps, mapDispatchToProps)(Home)
 
-function rconnect(pathname, pageStates, pageActions) {
+function rconnect(pathname?: string, pageStates?: any, pageActions?: any) {
     // if (!routeMap[pathname]) {
     //     routeMap[pathname] = {
     //         stateNames: pageStates,
     //         actionNames: pageActions
     //     }
     // }
-
+    console.log(pathname, pageStates, pageActions)
     return (target) => connect(mapStateToProps, mapDispatchToProps)(target)
 }
 

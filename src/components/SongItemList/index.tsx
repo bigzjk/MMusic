@@ -1,6 +1,7 @@
-import React, {useState, useEffect, createContext, useContext} from 'react'
+import React, { useEffect, createContext, useContext } from 'react'
 import SongItem from 'components/SongItem'
 import request from 'utils/request'
+import { requestTuijianList, receiveTuijianList } from 'hooksRudecer/tuijian'
 import {ReducerBoxContext, ReducerBoxReducer} from 'components/ReducerBox'
 
 import './index.scss'
@@ -9,6 +10,7 @@ export const SongItemListContext = createContext({
     playlistName: ''
 })
 
+// useReducer是传入组件的children,所以需要多包一层
 export default function SongItemList(props){
     let title = props.title
     return (
@@ -19,44 +21,29 @@ export default function SongItemList(props){
     )
 }
 function SongItemListChild(props){
-    const {dispatch, state = []} = useContext(ReducerBoxContext)
-    console.log('statestate', state)
+    const {dispatch, state} = useContext(ReducerBoxContext)
 
-    const [list, setList] = useState([])
     useEffect(() => {
-        // const getResp = async () => {
-        //     let res: any = await request({url:'client_play_list_tag'})
-        //     let newlist = res.data.msg
-        //     setList(newlist)
-        //   };
-        // getResp()
-        
-        // dispatch({
-        //     type:'INDEX_TUIJIAN',
-        //     // apiName:"client_play_list_tag"
-        // })
-        console.log('state', state)
-        setList(state)
-        return () => {
-        }
-    }, list)
+        //首先分发一个开始异步获取数据的action
+        dispatch(requestTuijianList())
+        request({url:'client_play_list_tag'}).then(resp => {
+            //获取到数据后分发一个action，通知reducer更新状态
+            dispatch(receiveTuijianList(resp))
+        })
+        return () => {}
+    }, [])
+    let showList = state.tuijianList
     
     return (
         <div className="SongItemList ">
             <div className="title">{props.title}</div>
-            {state.length > 0 && state.map((item, i) =>(
+            {showList.length > 0 && showList.map((item, i) =>(
                 <div key={i} className="SongItemBox">
                     <SongItemListContext.Provider value={item}>
                         <SongItem />
                     </SongItemListContext.Provider>
                 </div>
             ))}
-            <div onClick={() => {
-                dispatch({
-                    type:'INDEX_TUIJIAN',
-                    // apiName:"client_play_list_tag"
-                })
-            }}>dianji </div>
         </div>
     )
 }
