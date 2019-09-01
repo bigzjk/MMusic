@@ -8,10 +8,9 @@
         "allowJs": true,
         "allowSyntheticDefaultImports": true,
         "experimentalDecorators": true,
-        "noImplicitThis": false,
+        "noImplicitThis": true,
         "importHelpers": true,
         "checkJs": false,
-        "strict": false,
         "lib": [
             "es5",
             "es6",
@@ -31,21 +30,16 @@
         "sourceMap": true,
         "baseUrl": "src",
         "paths": {
-            "models/*":["models/*"],
             "utils/*": ["utils/*"],
             "component/*": ["component/*"],
             "assets/*": ["assets/*"],
             "images/*": ["assets/images/*"],
-            "app/*": ["app/*"],
-            "api/*": ["api/*"],
-            "mapi/*": ["mapi/*"],
-            "mixin_scss":["pages/mixin.scss"],
-            "mixin_less":["pages/mixin.less"],
+            "redux/*": ["redux/*"],
             "constant/*": ["constant/*"],
         }
     },
     "exclude": [
         "node_modules",
-        "build",
+        "dist",
     ]
 }

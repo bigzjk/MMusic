@@ -1,8 +1,10 @@
+const fs = require('fs')
 const path = require('path')
 const webpack = require('webpack')
 let HtmlWebpackPlugin = require('html-webpack-plugin')
 let { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const appDirectory = fs.realpathSync(process.cwd());
 
 module.exports = {
     entry: './src/pages/index.tsx',
@@ -48,6 +50,19 @@ module.exports = {
                 test: /\.(js|ts|tsx)$/, 
                 enforce: "pre",
                 loader: "source-map-loader" 
+            },
+            {
+                test: /\.tsx?$/,
+                enforce: 'pre',
+                use: [
+                  {
+                    options: {
+                      emitErrors:true,
+                    },
+                    loader: require.resolve('tslint-loader'),
+                  }
+                ],
+                include: path.resolve(appDirectory, 'src')
             },
             {
                 test: /\.(scss|css)$/,

@@ -7,11 +7,11 @@ import {ReducerBoxContext, ReducerBoxReducer} from 'components/ReducerBox'
 import './index.scss'
 export const SongItemListContext = createContext({
     image: '',
-    playlistName: ''
+    playlistName: '',
 })
 
 // useReducer是传入组件的children,所以需要多包一层
-export default function SongItemList(props){
+export default function SongItemList(props) {
     let title = props.title
     return (
         <ReducerBoxReducer>
@@ -20,24 +20,26 @@ export default function SongItemList(props){
 
     )
 }
-function SongItemListChild(props){
+function SongItemListChild(props) {
     const {dispatch, state} = useContext(ReducerBoxContext)
 
     useEffect(() => {
-        //首先分发一个开始异步获取数据的action
+        // 首先分发一个开始异步获取数据的action
         dispatch(requestTuijianList())
-        request({url:'client_play_list_tag'}).then(resp => {
-            //获取到数据后分发一个action，通知reducer更新状态
+        request({url: 'client_play_list_tag'}).then(resp => {
+            // 获取到数据后分发一个action，通知reducer更新状态
             dispatch(receiveTuijianList(resp))
         })
-        return () => {}
+        return () => {
+            console.log('---')
+        }
     }, [])
     let showList = state.tuijianList
-    
+
     return (
         <div className="SongItemList ">
             <div className="title">{props.title}</div>
-            {showList.length > 0 && showList.map((item, i) =>(
+            {showList.length > 0 && showList.map((item, i) => (
                 <div key={i} className="SongItemBox">
                     <SongItemListContext.Provider value={item}>
                         <SongItem />

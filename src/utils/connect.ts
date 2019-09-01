@@ -5,34 +5,64 @@ import actionsLoc from '../redux/actions'
 
 // import getPost from '../redux/actions/getPost'
 
-const mapStateToProps = (state) =>{
-    return {
-        // props: state
-        homeReducer: state.homeReducer
-    }
+const isString = (value) => {
+    return typeof value === 'string' || value instanceof String
+}
+const isArray = (value) => {
+    return Array.isArray ? Array.isArray(value) : Object.prototype.toString.call(value) === '[object array]'
 }
 
-// function mapDispatchToProps(dispatch) {
-//     return { actions: bindActionCreators(actionsLoc, dispatch) }
-// }
+let hashMap = {}
+const mapStateToProps = (state, props) => {
+    const { hash } = props.location
+    const stateNames = hashMap[hash].stateNames || 'homeReducer'
+
+    if (isString(stateNames)) {
+        return {
+            [stateNames]: state[stateNames],
+        }
+    }
+    if (isArray(stateNames)) {
+        let newState = {}
+        stateNames.map(item => {
+            return newState[stateNames] = item
+        })
+        return newState
+    }
+    return state
+}
+
 function mapDispatchToProps(dispatch, props) {
+    const { hash } = props.location
+    const actionNames = hashMap[hash].actionNames
+    let newActions = {}
+
+    if (isString(actionNames)) {
+        newActions[actionNames] = actionsLoc[actionNames]
+    } else if (isArray(actionNames)) {
+        actionNames.map(item => {
+            return newActions[item] = item
+        })
+    } else {
+        newActions = actionsLoc
+    }
+
     return {
-        actions: bindActionCreators(actionsLoc, dispatch)
+        actions: bindActionCreators(newActions, dispatch),
     }
 }
 
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Home)
-
-function rconnect(pathname?: string, pageStates?: any, pageActions?: any) {
-    // if (!routeMap[pathname]) {
-    //     routeMap[pathname] = {
-    //         stateNames: pageStates,
-    //         actionNames: pageActions
-    //     }
-    // }
-    console.log(pathname, pageStates, pageActions)
-    return (target) => connect(mapStateToProps, mapDispatchToProps)(target)
+function rconnect(hash?: string, pageStates?: any, pageActions?: any) {
+// function rconnect(hash, pageStates, pageActions) {
+    if (!hashMap[hash]) {
+        hashMap[hash] = {
+            stateNames: pageStates,
+            actionNames: pageActions,
+        }
+    }
+    return (target) => {
+        return connect(mapStateToProps, mapDispatchToProps)(target)
+    }
 }
 
 export default rconnect

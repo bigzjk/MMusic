@@ -31,6 +31,4 @@ ReactDOM.render(
           {routes()}
         </HashRouter>
       </Provider>
-  </div>, document.getElementById('root')
-)
-
+  </div>, document.getElementById('root'))

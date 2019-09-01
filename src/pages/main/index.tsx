@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import Comp from './Comp'
 import './index.scss'
 function Index() {
-    useEffect(()=>{
+    useEffect(() => {
         console.log('进来了,Index')
         return () => {
             console.log('出去了,Index')
@@ -14,7 +14,7 @@ function Index() {
 }
 
 function List() {
-    useEffect(()=>{
+    useEffect(() => {
         console.log('进来了m List')
         return () => {
             console.log('出去了， List')
@@ -23,22 +23,21 @@ function List() {
     return <h1>ListPage</h1>
 }
 
-
 export const CounterContext = createContext(99)
 function Counter() {
-    
+
     let [count, dispatch] = useReducer((state, action) => {
-        switch(action.type){
+        switch (action.type) {
             case 'add':
                 return state + 1;
             case 'sub':
-                return state -1;
+                return state - 1;
             default:
                 return state
         }
     }, 10)
     // const [count, setCount] = useState(1)
-    useEffect(()=>{
+    useEffect(() => {
         console.log('进来了')
         return () => {
             console.log('出去了')
@@ -47,11 +46,11 @@ function Counter() {
     return (
         <div>
             <h3>点击了{count}次</h3>
-            <div 
-                onClick={()=>dispatch({type: 'add'})}
+            <div
+                onClick={() => dispatch({type: 'add'})}
             >增加</div>
-            <div 
-                onClick={()=>dispatch({type: 'sub'})}
+            <div
+                onClick={() => dispatch({type: 'sub'})}
 
             >减少</div>
             <li><Link to="/list">列表页</Link></li>
@@ -72,6 +71,4 @@ function Counter() {
         </div>
     );
 }
-
-
 export default Counter;

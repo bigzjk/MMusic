@@ -10,7 +10,7 @@ const store = createStore(
     compose(
         applyMiddleware(...[thunk]),
         // composeWithDevTools && composeWithDevTools()
-    )
+    ),
 )
 
 export default store

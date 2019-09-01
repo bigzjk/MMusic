@@ -8,14 +8,11 @@ const request = (opt) => {
     }
     // Toast.loading('加载中。。。', 60)
     return new Promise((resolve, reject) => {
-        axios(obj).then(function(respp):void{
+        axios(obj).then(function(respp): void {
             Toast.hide()
             resolve(respp)
         })
-    }) 
-    
-    
-
+    })
 }
 
 export default request

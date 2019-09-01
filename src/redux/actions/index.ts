@@ -3,5 +3,5 @@ import getBanner from './home'
 
 export default {
   addAction,
-  getBanner
+  getBanner,
 }

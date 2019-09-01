@@ -21,16 +21,14 @@ function List() {
     return <h1>ListPage</h1>
 }
 
-
 export const CounterContext = createContext(99)
 function Counter() {
-    
     let [count, dispatch] = useReducer((state, action) => {
-        switch(action.type){
+        switch (action.type) {
             case 'add':
                 return state + 1;
             case 'sub':
-                return state -1;
+                return state - 1;
             default:
                 return state
         }
@@ -42,15 +40,15 @@ function Counter() {
     //         console.log('出去了')
     //     }
     // })
-    console.log('=========',count)
+    console.log('=========', count)
     return (
         <div>
             <h3>点击了{count}次</h3>
-            <div 
-                onClick={()=>dispatch({type: 'add'})}
+            <div
+                onClick={() => dispatch({type: 'add'})}
             >增加</div>
-            <div 
-                onClick={()=>dispatch({type: 'sub'})}
+            <div
+                onClick={() => dispatch({type: 'sub'})}
 
             >减少</div>
             <Router>
@@ -68,6 +66,5 @@ function Counter() {
         </div>
     );
 }
-
 
 export default Counter;

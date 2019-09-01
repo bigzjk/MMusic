@@ -5,29 +5,46 @@ import {Toast, Carousel} from 'antd-mobile'
 import connect from 'utils/connect'
 import SongItemList from 'components/SongItemList'
 // import SongItemListBox from 'components/SongItemListBox'
+
 import './index.scss'
+import { ChangeEvent } from 'react';
+interface IProps {
+    homeReducer: any
+    actions: IConnectProps
+}
 
+interface IState {
+    val: string
+    focusInp: boolean
+}
+/* TODO：此处类型待修改，因为目前还没有重整connect和request，没法给太具体的类型定义 */
+/* 关联redux之后的类型 */
+export interface IConnectProps {
+    actions?: {
+        [index: string]: (...args: any[]) => (Promise<any> | any | void);
+    }
+    [index: string]: any
+}
 
-@connect('', 'homeReducer', 'getBanner')
-class Home extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            val: '',
-            focusInp: false,
-        }
+// @connect('', 'homeReducer', 'getBanner')
+class Home extends React.Component<IProps, IState> {
+
+    public state: IState = {
+        val: '',
+        focusInp: false,
     }
 
+    private inpRef: HTMLInputElement;
 
-    componentDidMount() {
+    public componentDidMount() {
         Toast.loading('加载中...')
-        this.props.actions.getBanner().then((resp) => {
+        this.props.actions.getBanner().then((resp: any) => {
             // console.log('resp', resp)
             Toast.hide()
         })
     }
 
-    onChangeInp = (event) => {
+    private onChangeInp = (event: ChangeEvent<HTMLInputElement>): void => {
         let val = event.target.value.trim()
         this.setState({
             val,
@@ -35,7 +52,7 @@ class Home extends React.Component {
 
     }
 
-    render() {
+    public render() {
         const { val } = this.state
         let { homeReducer } = this.props
         let banner = homeReducer.bannerList

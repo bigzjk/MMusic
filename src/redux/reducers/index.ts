@@ -4,6 +4,6 @@ import homeReducer from './home'
 
 const rootReducer = combineReducers({
   numReducer,
-  homeReducer
+  homeReducer,
 })
 export default rootReducer
