@@ -52,7 +52,7 @@ function mapDispatchToProps(dispatch, props) {
     }
 }
 
-function rconnect(hash?: string, pageStates?: any, pageActions?: any) {
+function rconnect(hash?: string, pageStates?: any, pageActions?: any): any {
 // function rconnect(hash, pageStates, pageActions) {
     if (!hashMap[hash]) {
         hashMap[hash] = {

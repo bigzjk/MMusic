@@ -1,3 +1,57 @@
 .Search{
-    background-color: yellowgreen;
+    width: 100%;
+    background: #fff;
+    .InpBox{
+        position: relative;
+        padding: 10px 60px 20px 20px;
+        box-sizing: border-box;
+        border-bottom: 1px solid #dedede;
+        height: 50px;
+        line-height: 50px;
+        background: #fff;
+        .left_con {
+            width: 100%;
+            height: 30px;
+            float: left;
+            background-color: #F4F4F4;
+            position: relative;
+            padding-right: 40px;
+            padding-left: 30px;
+            box-sizing: border-box;
+            border-radius: 150px;
+            input{
+                padding-right: 10px;
+                background-color: #F4F4F4;
+                box-sizing: border-box;
+                font-size: 14px;
+                width: 100%;
+                height: 100%;
+                border: 0;
+                vertical-align: top;
+            }
+            .search-img {
+                width: 20px;
+                position: absolute;
+                top: 5px;
+                left: 10px;
+            }
+            .submit{
+                width: 40px;
+                line-height: 30px;
+                position: absolute;
+                right: 0;
+                top: 0;
+                font-size: 16px;
+                color: #333;
+            }
+        }
+        .search-close {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            font-size: 16px;
+            color: #999;
+            text-align: center;
+        }
+    }
 }
