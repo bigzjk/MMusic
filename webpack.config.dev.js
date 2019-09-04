@@ -44,7 +44,7 @@ module.exports = {
             },
             {
                 test: /\.tsx?$/,
-                use: ['awesome-typescript-loader', 'ts-loader']
+                use: [ 'ts-loader']
             },
             {  
                 test: /\.(js|ts|tsx)$/, 
@@ -66,7 +66,6 @@ module.exports = {
             },
             {
                 test: /\.(scss|css)$/,
-                // use: ['style-loader', 'css-loader', 'sass-loader']
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
@@ -85,7 +84,6 @@ module.exports = {
             },
             {
                 test: /\.less$/,
-                // use: ['style-loader', 'css-loader', 'sass-loader']
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
@@ -175,12 +173,4 @@ module.exports = {
             // }
         }
     },
-    // resolve: {
-    //     extensions: ['.js', '.jsx', '.jpg'],
-    //     alias: {
-    //         pages: path.resolve(__dirname, './src/pages/'),
-    //         // images: path.resolve(__dirname, './src/assets/images/')
-    //     }
-    // }
-
 }

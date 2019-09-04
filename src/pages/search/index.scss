@@ -1,6 +1,7 @@
 .Search{
     width: 100%;
     background: #fff;
+    height: 100vh;
     .InpBox{
         position: relative;
         padding: 10px 60px 20px 20px;
@@ -52,6 +53,27 @@
             font-size: 16px;
             color: #999;
             text-align: center;
+        }
+    }
+    .Hotkeyword{
+        width: 100%;
+        ul{
+            width: 100%;
+            padding: 0 10px;
+            box-sizing: border-box;
+            li{
+                overflow: hidden;
+                margin-top: 10px;
+                background-color: #F3F3F3;
+                color: #333;
+                padding: 0 15px;
+                text-align: center;
+                font-size: 14px;
+                border-radius: 15rem;
+                vertical-align: top;
+                margin-right: 2%;
+                float: left;
+            }
         }
     }
 }

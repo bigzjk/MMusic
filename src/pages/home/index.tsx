@@ -8,33 +8,46 @@ import SongItemList from 'components/SongItemList'
 
 import './index.scss'
 
+interface IProps {
+    actions: any
+    homeReducer: any
+}
+
+interface IState {
+    val: string
+}
+
 @connect('', 'homeReducer', 'getBanner')
-class Home extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            val: '',
-            focusInp: false,
-        }
-    }
-    static contextTypes = {
-        // router: PropTypes.object.isRequired,
+class Home extends React.Component<IProps, IState> {
+    // constructor() {
+    //     super()
+    //     this.state = {
+    //         val: '',
+    //         focusInp: false,
+    //     }
+    // }
+    // static contextTypes = {
+    //     // router: PropTypes.object.isRequired,
+    // }
+    public state: IState = {
+        val: '',
     }
 
-    componentDidMount() {
+    public componentDidMount() {
         Toast.loading('加载中...')
+        let a: string
         this.props.actions.getBanner().then((resp) => {
             // console.log('resp', resp)
             Toast.hide()
         })
     }
 
-    onHandleInp = () => {
+    private onHandleInp = () => {
         console.log(this.context)
         console.log(1234)
     }
 
-    render() {
+    public render() {
         const { val } = this.state
         let { homeReducer } = this.props
         let banner = homeReducer.bannerList

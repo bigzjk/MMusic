@@ -9,7 +9,7 @@ const isString = (value) => {
     return typeof value === 'string' || value instanceof String
 }
 const isArray = (value) => {
-    return Array.isArray ? Array.isArray(value) : Object.prototype.toString.call(value) === '[object array]'
+    return Array.isArray ? Array.isArray(value) : Object.prototype.toString.call(value) === '[object Array]'
 }
 
 let hashMap = {}
@@ -52,8 +52,7 @@ function mapDispatchToProps(dispatch, props) {
     }
 }
 
-function rconnect(hash?: string, pageStates?: any, pageActions?: any): any {
-// function rconnect(hash, pageStates, pageActions) {
+function rconnect(hash?: string, pageStates?: any, pageActions?: any) {
     if (!hashMap[hash]) {
         hashMap[hash] = {
             stateNames: pageStates,
@@ -61,7 +60,9 @@ function rconnect(hash?: string, pageStates?: any, pageActions?: any): any {
         }
     }
     return (target) => {
-        return connect(mapStateToProps, mapDispatchToProps)(target)
+        type ComponentType = typeof target
+        const connectV2: ComponentType = connect(mapStateToProps, mapDispatchToProps)(target)
+        return connectV2
     }
 }
 
