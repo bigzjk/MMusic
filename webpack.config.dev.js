@@ -4,12 +4,13 @@ const webpack = require('webpack')
 let HtmlWebpackPlugin = require('html-webpack-plugin')
 let { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
 const appDirectory = fs.realpathSync(process.cwd());
 
 module.exports = {
     entry: './src/pages/index.tsx',
     mode: 'development',
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'cheap-module-source-map',
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js',
@@ -34,7 +35,7 @@ module.exports = {
         hot: true,
         historyApiFallback: true,
         // proxy:{}
-        stats: 'errors-only' // 构建日志
+        // stats: 'errors-only' // 构建日志
     },
     module: {
         rules: [
@@ -44,25 +45,22 @@ module.exports = {
             },
             {
                 test: /\.tsx?$/,
-                use: [ 'ts-loader']
+                use: [
+                    'ts-loader',
+                    {
+                        options: {
+                          emitErrors:true,
+                        },
+                        loader: require.resolve('tslint-loader'),
+                      }
+                ],
+                enforce: 'pre', // 前置执行
+                include: path.resolve(appDirectory, 'src')
             },
             {  
                 test: /\.(js|ts|tsx)$/, 
                 enforce: "pre",
                 loader: "source-map-loader" 
-            },
-            {
-                test: /\.tsx?$/,
-                enforce: 'pre',
-                use: [
-                  {
-                    options: {
-                      emitErrors:true,
-                    },
-                    loader: require.resolve('tslint-loader'),
-                  }
-                ],
-                include: path.resolve(appDirectory, 'src')
             },
             {
                 test: /\.(scss|css)$/,
@@ -128,7 +126,31 @@ module.exports = {
     //     "react": "React",
     //     "react-dom": "ReactDOM"
     // },
+    // config.optimization.splitChunks
     plugins: [
+        // new webpack.optimize.CommonsChunkPlugin({ // optimization.splitChunks代替
+        //     name: 'vendor',
+        //     // filename: "vendor.js"
+        //     // (Give the chunk a different name)
+      
+        //     minChunks: Infinity,
+        //     // (with more entries, this ensures that no other module
+        //     //  goes into the vendor chunk)
+        // }),
+        new HtmlWebpackExternalsPlugin({
+            externals: [
+                {
+                    module: 'react',
+                    entry: 'https://unpkg.com/react@16/umd/react.development.js',
+                    global: 'React'
+                },
+                {
+                    module: 'react-dom',
+                    entry: 'https://unpkg.com/react-dom@16/umd/react-dom.development.js',
+                    global: 'ReactDOM'
+                }
+            ]
+        }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'public/index.html'),
             filename: 'index.html',
@@ -153,24 +175,29 @@ module.exports = {
     optimization: {
         splitChunks: {
             chunks: 'all',
-            // minSize: 30000,
-            // maxSize: 0,
-            // minChunks: 1,
-            // maxAsyncRequests: 5,
-            // maxInitialRequests: 3,
-            // automaticNameDelimiter: '~',
-            // name: true,
-            // cacheGroups: {
-            //     vendors: {
-            //         test: /[\\/]node_modules[\\/]/,
-            //         priority: -10
-            //     },
-            //     default: {
-            //         minChunks: 2,
-            //         priority: -20,
-            //         reuseExistingChunk: true
-            //     }
-            // }
+            minSize: 3000,
+            maxSize: 0,
+            minChunks: 2,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '~',
+            name: true,
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true
+                },
+                commons: {
+                    test: /(react|react-dom)/,
+                    name: 'vendors_react',
+                    chunks: 'all' 
+                }
+            }
         }
     },
 }

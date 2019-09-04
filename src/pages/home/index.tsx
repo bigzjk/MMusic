@@ -35,7 +35,6 @@ class Home extends React.Component<IProps, IState> {
 
     public componentDidMount() {
         Toast.loading('加载中...')
-        let a: string
         this.props.actions.getBanner().then((resp) => {
             // console.log('resp', resp)
             Toast.hide()

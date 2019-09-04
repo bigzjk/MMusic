@@ -1,5 +1,4 @@
 const path = require('path')
-const webpack = require('webpack')
 let HtmlWebpackPlugin = require('html-webpack-plugin')
 let { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -130,25 +129,30 @@ module.exports = {
     optimization: {
         splitChunks: {
             chunks: 'all',
-            // minSize: 30000,
-            // maxSize: 0,
-            // minChunks: 1,
-            // maxAsyncRequests: 5,
-            // maxInitialRequests: 3,
-            // automaticNameDelimiter: '~',
-            // name: true,
-            // cacheGroups: {
-            //     vendors: {
-            //         test: /[\\/]node_modules[\\/]/,
-            //         priority: -10
-            //     },
-            //     default: {
-            //         minChunks: 2,
-            //         priority: -20,
-            //         reuseExistingChunk: true
-            //     }
-            // }
+            minSize: 3000,
+            maxSize: 0,
+            minChunks: 2,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            automaticNameDelimiter: '~',
+            name: true,
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true
+                },
+                commons: {
+                    test: /(react|react-dom)/,
+                    name: 'vendors_react',
+                    chunks: 'all' 
+                }
+            }
         }
-    }
+    },
 
 }
