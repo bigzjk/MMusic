@@ -7,7 +7,7 @@ import store from '../redux/store'
 
 import Home from "./home";
 import Search from "./search";
-import Main from "./main/index";
+import Detail from "./detail";
 
 import './common.scss'
 const routes = () => (
@@ -15,9 +15,9 @@ const routes = () => (
     <main>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/main" component={Main} />
         <Route path="/home" component={Home} />
         <Route path="/search" component={Search} />
+        <Route path="/detail" component={Detail} />
       </Switch>
     </main>
   </div>

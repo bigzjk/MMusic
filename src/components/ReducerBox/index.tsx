@@ -1,11 +1,13 @@
 import React, { createContext, useReducer } from 'react'
 import { RECEIVE_TUIJIANLIST } from 'hooksRudecer/tuijian'
 import { RECEIVE_HOT_KEYWORD } from 'hooksRudecer/hotKeyword'
+import { RECEIVER_DETAIL } from 'hooksRudecer/detail'
 
 // 初始化state值
 let initState = {
     tuijianList: [],
     keywordList: [],
+    musicList: [],
 }
 export const ReducerBoxContext = createContext({
     state: initState,
@@ -26,10 +28,16 @@ export const ReducerBoxReducer =  props => {
             }
             // 热搜词
             case RECEIVE_HOT_KEYWORD: {
-                console.log(action.keywordList, 1111)
                 let keywordList = action.keywordList.data.result.results
                 return Object.assign({}, state, {
                     keywordList: keywordList,
+                })
+            }
+            // 热搜词
+            case RECEIVER_DETAIL: {
+                let detailList = action.detailList.data.contentList
+                return Object.assign({}, state, {
+                    musicList: detailList,
                 })
             }
             default:
