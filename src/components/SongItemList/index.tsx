@@ -34,7 +34,7 @@ function SongItemListChild(props) {
             console.log('---')
         }
     }, [])
-    let showList = state.tuijianList
+    let showList = state.tuijianList || []
     return (
         <div className="SongItemList ">
             <div className="title">{props.title}</div>

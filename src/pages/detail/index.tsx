@@ -41,7 +41,7 @@ const MusicList = () => {
             // cleanup
         };
     }, [])
-    const { musicList } = state
+    const { musicList = [] } = state
     return (
         <div className="MusicList">
             <ul>

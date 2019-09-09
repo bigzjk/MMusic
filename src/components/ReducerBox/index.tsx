@@ -35,7 +35,7 @@ export const ReducerBoxReducer =  props => {
             }
             // 热搜词
             case RECEIVER_DETAIL: {
-                let detailList = action.detailList.data.contentList
+                let detailList = action.detailList.data.contentList || []
                 return Object.assign({}, state, {
                     musicList: detailList,
                 })
