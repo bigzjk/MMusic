@@ -4,7 +4,7 @@
     width: 100%;
     .HeadDetail{
         width: 100%;
-        height: 160px;
+        height: 320px;
         background: yellowgreen;
         display: flex;
         
@@ -15,13 +15,13 @@
             width: 100%;
             li{
                 width: 100%;
-                border-bottom: 1px solid #ccc;
-                height: 60px;
-                padding-left: 20px;
-                padding-top: 10px;
+                border-bottom: 1Px solid #ccc;
+                height: 120px;
+                padding-left: 40px;
+                padding-top: 20px;
                 box-sizing: border-box;
                 .musicName{
-                    font-size: 15px;
+                    font-size: 30px;
                     color: #222;
                     overflow: hidden;
                     text-overflow: ellipsis;
@@ -29,13 +29,13 @@
                     -webkit-line-clamp: 1;
                     -webkit-box-orient: vertical;
                     width: 92%;
-                    padding-right: 15px;
+                    padding-right: 30px;
                     position: relative;
                 }
                 .singername{
                     padding: 0%;
                     text-indent: 0em;
-                    font-size: 14px;
+                    font-size: 28px;
                     color: #888;
                     overflow: hidden;
                     text-overflow: ellipsis;
