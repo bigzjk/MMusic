@@ -4,53 +4,53 @@
     height: 100vh;
     .InpBox{
         position: relative;
-        padding: 10px 60px 20px 20px;
+        padding: 20px 120px 40px 50px;
         box-sizing: border-box;
-        border-bottom: 1px solid #dedede;
-        height: 50px;
-        line-height: 50px;
+        border-bottom: 1Px solid #dedede;
+        height: 100px;
+        line-height: 100px;
         background: #fff;
         .left_con {
             width: 100%;
-            height: 30px;
+            height: 60px;
             float: left;
             background-color: #F4F4F4;
             position: relative;
-            padding-right: 40px;
-            padding-left: 30px;
+            padding-right: 80px;
+            padding-left: 60px;
             box-sizing: border-box;
-            border-radius: 150px;
+            border-radius: 300px;
             input{
-                padding-right: 10px;
+                padding-right: 20px;
                 background-color: #F4F4F4;
                 box-sizing: border-box;
-                font-size: 14px;
+                font-size: 28px;
                 width: 100%;
                 height: 100%;
                 border: 0;
                 vertical-align: top;
             }
             .search-img {
-                width: 20px;
+                width: 40px;
                 position: absolute;
-                top: 5px;
-                left: 10px;
+                top: 10px;
+                left: 20px;
             }
             .submit{
-                width: 40px;
-                line-height: 30px;
+                width: 80px;
+                line-height: 60px;
                 position: absolute;
                 right: 0;
                 top: 0;
-                font-size: 16px;
+                font-size: 32px;
                 color: #333;
             }
         }
         .search-close {
             position: absolute;
             top: 0;
-            right: 10px;
-            font-size: 16px;
+            right: 20px;
+            font-size: 32px;
             color: #999;
             text-align: center;
         }
@@ -59,17 +59,17 @@
         width: 100%;
         ul{
             width: 100%;
-            padding: 0 10px;
+            padding: 0 20px;
             box-sizing: border-box;
             li{
                 overflow: hidden;
-                margin-top: 10px;
+                margin-top: 20px;
                 background-color: #F3F3F3;
                 color: #333;
-                padding: 0 15px;
+                padding: 0 30px;
                 text-align: center;
-                font-size: 14px;
-                border-radius: 15rem;
+                font-size: 28px;
+                border-radius: 16px;
                 vertical-align: top;
                 margin-right: 2%;
                 float: left;

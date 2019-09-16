@@ -8,7 +8,6 @@ import store from '../redux/store'
 import Home from "./home";
 import Search from "./search";
 import Detail from "./detail";
-
 import './common.scss'
 const routes = () => (
   <div className="primary-layout">
