@@ -4,7 +4,8 @@ import {Toast} from 'antd-mobile'
 const request = (opt) => {
     // Toast.hide()
     let obj = {
-        baseURL: 'http://127.0.0.1:3456/',
+        // baseURL: 'http://127.0.0.1:3456/',
+        baseURL: 'http://mapi.alkun.top',
         url: opt.url,
     }
     // Toast.loading('加载中。。。', 60)

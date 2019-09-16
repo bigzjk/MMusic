@@ -74,7 +74,12 @@ module.exports = {
                             plugins: () => [
                                 require('autoprefixer')({
                                     overrideBrowserslist: ['last 2 version', '>0.1%']
-                                })
+                                }),
+                                require('postcss-pxtorem')({
+                                    rootValue: 100,
+                                    propWhiteList: [],
+                                    // minPixelValue:2,
+                                  })
                             ]
                         }
                     }
@@ -92,7 +97,12 @@ module.exports = {
                             plugins: () => [
                                 require('autoprefixer')({
                                     overrideBrowserslist: ['last 2 version', '>0.1%']
-                                })
+                                }),
+                                require('postcss-pxtorem')({
+                                    rootValue: 100,
+                                    propWhiteList: [],
+                                    // minPixelValue:2,
+                                  })
                             ]
                         }
                     }
