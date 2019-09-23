@@ -5,8 +5,52 @@
     .HeadDetail{
         width: 100%;
         height: 320px;
-        background: yellowgreen;
+        background: url('http://m.music.migu.cn/migu/fs/media/p/154/351/11032/image/20180615/1340884.jpg') no-repeat;
+        background-size: cover;
+        position: relative;
+        padding: 30px;
+        box-sizing: border-box;
         display: flex;
+
+        .imgInfo{
+            width: 270px;
+            height: 200px;
+            img{
+                display: block;
+                width: 100%;
+                flex: 1;
+            }
+        }
+        .textInfo{
+            padding-left: 20px;
+            font-size: 28px;
+            color: #333;
+            text-align: justify;
+            word-break: break-all;
+            word-wrap: break-word;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            p{
+                font-size: 28px;
+                color: #333;
+            }
+            .tabBox{
+                width: 100%;
+                span{
+                    display: inline-block;
+                    margin-right: 2px;
+                    color: #fff;
+                    border-radius: 4px;
+                    padding: 4px 10px;
+                    background: #a314e2;
+                    text-align: center;
+                    transform: scale(.7);
+                }
+            }
+        }
         
     }
     .MusicList{

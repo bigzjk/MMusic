@@ -1,10 +1,8 @@
 import React, { useContext, useEffect } from 'react'
-import querystring from 'querystring'
 import { ReducerBoxContext, ReducerBoxReducer } from 'components/ReducerBox'
 import { receiverDetail, requestDetail } from 'hooksRudecer/detail'
 import request from 'utils/request'
 import './index.scss'
-import { Item } from 'antd-mobile/lib/tab-bar';
 interface IProps {
 
 }
@@ -12,16 +10,29 @@ interface IProps {
 const MusicListBox = () => {
     return (
         <ReducerBoxReducer>
+            <HeadDetail />
             <MusicList />
         </ReducerBoxReducer>
     )
 }
 const HeadDetail = () => {
+    const { state } = useContext(ReducerBoxContext)
+    let detailHead = state.detailState.detailHead[0]
+
     return (
-        <div className="HeadDetail">
-            <div className="imgInfo"></div>
-            <div className="textInfo"></div>
-        </div>
+        detailHead && detailHead.image ? <div className="HeadDetail">
+            <div className="imgInfo">
+                <img src={detailHead.image} alt="" />
+            </div>
+            <div className="textInfo">
+                <p>{detailHead.playListName}</p>
+                <div className="tabBox">
+                    {detailHead.tagLists.map(v => (
+                        <span key={v.tagid}>{v.tagName}</span>
+                    ))}
+                </div>
+            </div>
+        </div> : null
     )
 }
 const MusicList = () => {
@@ -31,9 +42,12 @@ const MusicList = () => {
 
     useEffect(() => {
         dispatch(requestDetail())
-        request({
+        request([{
             url: `playlistcontents_query_tag?playListType=2&playListId=${playListId}&contentCount=29`,
-        }).then( resp => {
+        }, {
+            url: `playlist_query_tag?onLine=1&queryChannel=0&createUserId=221acca8-9179-4ba7-ac3f-2b0fdffed356&contentCountMin=5&playListId=${playListId}`,
+        },
+        ]).then( resp => {
             dispatch(receiverDetail(resp))
         })
 
@@ -41,11 +55,12 @@ const MusicList = () => {
             // cleanup
         };
     }, [])
-    const { musicList = [] } = state
+    const { detailState } = state
+    const { detailList } = detailState
     return (
         <div className="MusicList">
             <ul>
-                {musicList.length > 0 && musicList.map(item => (
+                {detailList.length > 0 && detailList.map(item => (
                     <li key={item.songId}>
                         <p className="musicName">{item.contentName}</p>
                         <p className="singername">{item.singerName}</p>
@@ -59,7 +74,6 @@ const MusicList = () => {
 export default function Detail() {
     return (
         <div className="Detail">
-            <HeadDetail />
             <MusicListBox />
         </div>
     )

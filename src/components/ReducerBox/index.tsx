@@ -7,7 +7,10 @@ import { RECEIVER_DETAIL } from 'hooksRudecer/detail'
 let initState = {
     tuijianList: [],
     keywordList: [],
-    musicList: [],
+    detailState: {
+        detailList: [],
+        detailHead: [],
+    },
 }
 export const ReducerBoxContext = createContext({
     state: initState,
@@ -33,11 +36,17 @@ export const ReducerBoxReducer =  props => {
                     keywordList: keywordList,
                 })
             }
-            // 热搜词
+            // 详情
             case RECEIVER_DETAIL: {
-                let detailList = action.detailList.data.contentList || []
+                console.log('action', action)
+                let detailList = action.detailState[0].data.contentList
+                let detailHead = action.detailState[1].data.playlist
+                let detailState = {
+                    detailList,
+                    detailHead,
+                }
                 return Object.assign({}, state, {
-                    musicList: detailList,
+                    detailState,
                 })
             }
             default:

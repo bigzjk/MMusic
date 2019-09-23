@@ -42,8 +42,8 @@ class Home extends React.Component<IProps, IState> {
     }
 
     private onHandleInp = () => {
-        console.log(this.context)
-        console.log(1234)
+        // console.log(this.context)
+        // console.log(1234)
     }
 
     public render() {
