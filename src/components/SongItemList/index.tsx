@@ -2,7 +2,7 @@ import React, { useEffect, createContext, useContext } from 'react'
 import SongItem from 'components/SongItem'
 import request from 'utils/request'
 import { requestTuijianList, receiveTuijianList } from 'hooksRudecer/tuijian'
-import {ReducerBoxContext, ReducerBoxReducer} from 'components/ReducerBox'
+import {ReducerBoxContext, ReducerBoxReducer} from 'hooksRudecer'
 
 import './index.scss'
 export const SongItemListContext = createContext({

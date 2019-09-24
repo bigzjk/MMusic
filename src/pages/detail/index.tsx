@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { ReducerBoxContext, ReducerBoxReducer } from 'components/ReducerBox'
+import { ReducerBoxContext, ReducerBoxReducer } from 'hooksRudecer'
 import { receiverDetail, requestDetail } from 'hooksRudecer/detail'
 import request from 'utils/request'
 import './index.scss'

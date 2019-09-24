@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from 'react'
-import { RECEIVE_TUIJIANLIST } from 'hooksRudecer/tuijian'
-import { RECEIVE_HOT_KEYWORD } from 'hooksRudecer/hotKeyword'
-import { RECEIVER_DETAIL } from 'hooksRudecer/detail'
+import { RECEIVE_TUIJIANLIST } from './tuijian'
+import { RECEIVE_HOT_KEYWORD } from './hotKeyword'
+import { RECEIVER_DETAIL } from './detail'
 
 // 初始化state值
 let initState = {

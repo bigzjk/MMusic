@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react'
-import { ReducerBoxContext, ReducerBoxReducer } from 'components/ReducerBox'
+import { ReducerBoxContext, ReducerBoxReducer } from 'hooksRudecer'
 import { requestHotKeyword, receiveHotKeyword, RECEIVE_HOT_KEYWORD, REQUEST_HOT_KEYWORD } from 'hooksRudecer/hotKeyword'
 import request from 'utils/request'
 import './index.scss'

@@ -34,6 +34,7 @@ const request = (paramInfo: any) => {
         let getData: AxiosRequestConfig = {
             url: obj.url,
             method: obj.method || 'get',
+            // baseURL: 'http://127.0.0.1:3456/',
             baseURL: 'http://mapi.alkun.top',
         }
         if (getData.method === 'get') {
