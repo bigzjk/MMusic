@@ -18,9 +18,7 @@
 ```
 ### 项目介绍
 
-![首页](https://imgsa.baidu.com/forum/w%3D580%3B/sign=bb339ae5202eb938ec6d7afae5598435/9d82d158ccbf6c816fdeb5ecb33eb13532fa40cd.jpg)
-![歌单详情](https://imgsa.baidu.com/forum/w%3D580/sign=2a6c56d9a464034f0fcdc20e9fc27980/c7433efbfbedab6462d8d5c4f836afc378311edc.jpg)
-![搜索](https://imgsa.baidu.com/forum/w%3D580/sign=0f94b8fa39d3d539c13d0fcb0a86e927/38f9bcea15ce36d313471b3435f33a87e850b1c4.jpg)
+![首页](https://imgsa.baidu.com/forum/w%3D580/sign=486080e9accc7cd9fa2d34d109002104/287ad9af2edda3cc981623240ee93901203f9295.jpg)![歌单详情列表](https://imgsa.baidu.com/forum/w%3D580/sign=f14847643a2ac65c6705667bcbf3b21d/59bf4f87e950352a0d93be0c5c43fbf2b3118b95.jpg)![搜索](https://imgsa.baidu.com/forum/w%3D580/sign=59fb025ad2c451daf6f60ce386fd52a5/6db86ed5ad6eddc413f42eff36dbb6fd5266336b.jpg)
 
 ```js
 ├── dist
