@@ -18,7 +18,7 @@
 ```
 ### 项目介绍
 
-![首页](https://imgsa.baidu.com/forum/w%3D580/sign=486080e9accc7cd9fa2d34d109002104/287ad9af2edda3cc981623240ee93901203f9295.jpg)![歌单详情列表](https://imgsa.baidu.com/forum/w%3D580/sign=f14847643a2ac65c6705667bcbf3b21d/59bf4f87e950352a0d93be0c5c43fbf2b3118b95.jpg)![搜索](https://imgsa.baidu.com/forum/w%3D580/sign=59fb025ad2c451daf6f60ce386fd52a5/6db86ed5ad6eddc413f42eff36dbb6fd5266336b.jpg)
+![MMusic](https://imgsa.baidu.com/forum/pic/item/b24ccfa1cd11728b69f40b26c7fcc3cec2fd2ca1.jpg)
 
 ```js
 ├── dist
