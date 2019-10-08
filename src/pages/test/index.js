@@ -1,21 +1,24 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import request from 'utils/request'
-import './index.scss'
-// url: 'cms_list_tag?nid=23831003&type=2006&pageNo=0&pageSize=10'
-// 'client_play_list_tag'
-class Test extends Component{
-    componentDidMount() {
-        
+import React, { useEffect } from 'react'
 
-    }
-    render() {
-        return(
-            <div className="Test">
-                dsadab
-            </div>
-        )
-    }
+import connect from 'utils/connect'
+
+
+// console.log(connect)
+function Test(props) {
+    useEffect(() => {
+        props.actions.addAction(1)
+    }, [])
+    return (
+        <div>
+            adaa{props.numReducer.num}
+            <p
+                onClick={() => {
+                    props.actions.addAction()
+                }}
+            >+1</p>
+        </div>
+    )
 }
 
-export default Test
+
+export default connect('test', ['numReducer', 'homeReducer'], ['getBanner', 'addAction'])(Test)

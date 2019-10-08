@@ -12,10 +12,11 @@ const isArray = (value) => {
     return Array.isArray ? Array.isArray(value) : Object.prototype.toString.call(value) === '[object Array]'
 }
 
-let hashMap = {}
+let pathnameMap = {}
 const mapStateToProps = (state, props) => {
-    const { hash } = props.location
-    const stateNames = hashMap[hash].stateNames || 'homeReducer'
+    let { pathname } = props.location
+    pathname = pathname.replace('/', '')
+    const stateNames = pathnameMap[pathname].stateNames || 'homeReducer'
 
     if (isString(stateNames)) {
         return {
@@ -25,7 +26,7 @@ const mapStateToProps = (state, props) => {
     if (isArray(stateNames)) {
         let newState = {}
         stateNames.map(item => {
-            return newState[stateNames] = item
+            return newState[item] = state[item]
         })
         return newState
     }
@@ -33,32 +34,35 @@ const mapStateToProps = (state, props) => {
 }
 
 function mapDispatchToProps(dispatch, props) {
-    const { hash } = props.location
-    const actionNames = hashMap[hash].actionNames
-    let newActions = {}
+    let { pathname } = props.location
+    pathname = pathname.replace('/', '')
 
+    const actionNames = pathnameMap[pathname].actionNames
+    let newActions = {}
+    // tslint:disable-next-line:no-debugger
+    // debugger
     if (isString(actionNames)) {
         newActions[actionNames] = actionsLoc[actionNames]
     } else if (isArray(actionNames)) {
         actionNames.map(item => {
-            return newActions[item] = item
+            return newActions[item] = actionsLoc[item]
         })
     } else {
         newActions = actionsLoc
     }
-
     return {
         actions: bindActionCreators(newActions, dispatch),
     }
 }
 
-function rconnect(hash?: string, pageStates?: any, pageActions?: any) {
-    if (!hashMap[hash]) {
-        hashMap[hash] = {
+function rconnect(pathname?: string, pageStates?: any, pageActions?: any) {
+    if (!pathnameMap[pathname]) {
+        pathnameMap[pathname] = {
             stateNames: pageStates,
             actionNames: pageActions,
         }
     }
+    // console.log('pathnameMap', pathnameMap)
     return (target) => {
         type ComponentType = typeof target
         const connectV2: ComponentType = connect(mapStateToProps, mapDispatchToProps)(target)

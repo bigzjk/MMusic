@@ -90,6 +90,9 @@ class Home extends React.Component<IProps, IState> {
                     </div>}
                 </Link>
                 {banner.length > 0 && <SongItemList title="推荐歌单" />}
+                <Link className="index-search" to="./test">
+                   test
+                </Link>
             </div>
         )
     }
