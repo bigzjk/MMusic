@@ -18,7 +18,7 @@
 ```
 ### 项目介绍
 
-![MMusic](https://imgsa.baidu.com/forum/pic/item/b24ccfa1cd11728b69f40b26c7fcc3cec2fd2ca1.jpg)
+![MMusic](https://upload-images.jianshu.io/upload_images/10622208-3ddb1dc86bcf64df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ```js
 ├── dist
