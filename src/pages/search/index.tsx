@@ -3,12 +3,11 @@ import { ReducerBoxContext, ReducerBoxReducer } from 'hooksRudecer'
 import { requestHotKeyword, receiveHotKeyword, RECEIVE_HOT_KEYWORD, REQUEST_HOT_KEYWORD } from 'hooksRudecer/hotKeyword'
 import request from 'utils/request'
 import './index.scss'
-import { Link } from 'react-router-dom'
 
-const SearchBox = () => {
+const SearchBox = (props) => {
     return (
         <ReducerBoxReducer>
-            <Hotkeyword />
+            <Hotkeyword {...props}/>
         </ReducerBoxReducer>
     )
 }
@@ -32,7 +31,8 @@ const InpBox = () => {
     )
 }
 
-const Hotkeyword = () => {
+const Hotkeyword = (props) => {
+    console.log('propspropsprops', props)
     const {dispatch, state} = useContext(ReducerBoxContext)
     useEffect(() => {
         dispatch(requestHotKeyword())
@@ -40,32 +40,29 @@ const Hotkeyword = () => {
             dispatch(receiveHotKeyword(resp))
         })
     }, [])
-    console.log('state', state)
     const { keywordList } = state
     return (
         <div className="Hotkeyword">
             <ul>
                 {keywordList.length > 0 ? keywordList.map(item => (
-                    <Link key={item.contentId} to={`./searchResult?keyword=${item.txtData.txtCotent}`}>
-                        <li
-                            onClick={() => {
-                                console.log('history', history)
-                                // history.push({pathname: '/searchResult', query: {
-                                //     keyword: item.txtData.txtCotent,
-                                //   }})
-                            }}
-                        >{item.txtData.txtCotent}</li>
-                    </Link>
+                    <li
+                        key={item.contentId}
+                        onClick={() => {
+                            props.history.push({pathname: '/searchResult', query: {
+                                keyword: item.txtData.txtCotent,
+                                }})
+                        }}
+                    >{item.txtData.txtCotent}</li>
                 )) : null}
             </ul>
         </div>
     )
 }
-export default function Search() {
+export default function Search(props) {
     return (
         <div className="Search">
             <InpBox />
-            <SearchBox />
+            <SearchBox {...props} />
         </div>
     )
 }

@@ -71,7 +71,7 @@ const MusicList = () => {
     )
 }
 
-export default function Detail() {
+export default function Detail(props) {
     return (
         <div className="Detail">
             <MusicListBox />
