@@ -3,8 +3,14 @@ let HtmlWebpackPlugin = require('html-webpack-plugin')
 let { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
+// 速度分析
+const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin')
+// 代码多进程压缩
+const TerserWebpackPlugin = require('terser-webpack-plugin') 
 
-module.exports = {
+
+const smp = new SpeedMeasureWebpackPlugin()
+module.exports = smp.wrap({
     entry: './src/pages/index.tsx',
     mode: 'production',
     // devtool: 'cheap-module-eval-source-map',
@@ -27,17 +33,27 @@ module.exports = {
         rules: [
             {
                 test: /\.(jsx|js)$/,
-                use: 'babel-loader'
+                enforce: "pre",
+                // use: 'babel-loader'
+                use: [
+                    {
+                        loader: 'thread-loader',
+                        options: {
+                            workers: 3
+                        },
+                    },
+                    'babel-loader'
+                ],
             },
             {
                 test: /\.tsx?$/,
                 use: ['ts-loader']
             },
-            {  
-                test: /\.(js|ts|tsx)$/, 
-                enforce: "pre",
-                loader: "source-map-loader" 
-            },
+            // {  
+            //     test: /\.(js|ts|tsx)$/, 
+            //     enforce: "pre",
+            //     loader: "source-map-loader" 
+            // },
             {
                 test: /\.(scss|css)$/,
                 // use: ['style-loader', 'css-loader', 'sass-loader']
@@ -162,7 +178,13 @@ module.exports = {
                     chunks: 'all' 
                 }
             }
-        }
-    },
+        },
+        minimizer: [
+            new TerserWebpackPlugin({
+                parallel: 4
+            })
+        ]
 
-}
+    },
+    stats: 'errors-only'
+})
