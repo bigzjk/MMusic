@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import connect from 'utils/connect'
 import SongItemList from 'components/SongItemList'
 
-import './index.scss'
+import './index.less'
 
 interface IProps {
     actions: any
@@ -32,8 +32,11 @@ class Home extends React.Component<IProps, IState> {
     public state: IState = {
         val: '',
     }
+    public divv: HTMLDivElement;
 
     public componentDidMount() {
+        console.log(this.divv.innerHTML, 11111)
+
         Toast.loading('加载中...')
         this.props.actions.getBanner().then((resp) => {
             // console.log('resp', resp)
@@ -93,6 +96,7 @@ class Home extends React.Component<IProps, IState> {
                 <Link className="index-search" to="./test">
                    test
                 </Link>
+                <div ref={e => this.divv = e}><span>456789</span> </div>
             </div>
         )
     }

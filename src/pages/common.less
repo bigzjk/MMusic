@@ -212,31 +212,6 @@ body {
     flex: 5;
 }
 
-.flex-vertical {
-    @extend .flex-wrap;
-    flex-direction: column;
-}
-
-.flex-center {
-    @extend .flex-wrap;
-    justify-content: center;
-}
-
-.flex-middle {
-    @extend .flex-wrap;
-    align-content: center
-}
-
-.flex-between {
-    @extend .flex-wrap;
-    justify-content: space-between;
-}
-
-.flex-around {
-    @extend .flex-wrap;
-    justify-content: space-around;
-}
-
 html,
 body,
 #root {
@@ -256,27 +231,6 @@ body,
 /*截取*/
 
 // 元素可以设置宽度才可应用省略号
-%ellipsis-basic {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-@mixin ellipsis($width:100%) {
-    @extend %ellipsis-basic;
-    width: $width;
-}
-
-//多行省略
-@mixin line-clamp($line:2) {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: $line;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-all;
-}
-
 .line-clamp-1 {
     overflow: hidden;
     text-overflow: ellipsis;
