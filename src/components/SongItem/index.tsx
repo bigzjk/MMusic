@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import { SongItemListContext } from 'components/SongItemList'
-import './index.scss'
+import './index.less'
 import { Link } from 'react-router-dom';
 interface IProps {
     image: string

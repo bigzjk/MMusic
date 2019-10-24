@@ -54,30 +54,31 @@ module.exports = smp.wrap({
             //     enforce: "pre",
             //     loader: "source-map-loader" 
             // },
-            {
-                test: /\.(scss|css)$/,
-                // use: ['style-loader', 'css-loader', 'sass-loader']
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'sass-loader',
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            plugins: () => [
-                                require('autoprefixer')({
-                                    overrideBrowserslist: ['last 2 version', '>0.1%']
-                                }),
-                                require('postcss-pxtorem')({
-                                    rootValue: 100,
-                                    propWhiteList: [],
-                                    // minPixelValue:2,
-                                })
-                            ]
-                        }
-                    }
-                ]
-            },
+            
+            // {
+            //     test: /\.(scss|css)$/,
+            //     // use: ['style-loader', 'css-loader', 'sass-loader']
+            //     use: [
+            //         MiniCssExtractPlugin.loader,
+            //         'css-loader',
+            //         'sass-loader',
+            //         {
+            //             loader: 'postcss-loader',
+            //             options: {
+            //                 plugins: () => [
+            //                     require('autoprefixer')({
+            //                         overrideBrowserslist: ['last 2 version', '>0.1%']
+            //                     }),
+            //                     require('postcss-pxtorem')({
+            //                         rootValue: 100,
+            //                         propWhiteList: [],
+            //                         // minPixelValue:2,
+            //                     })
+            //                 ]
+            //             }
+            //         }
+            //     ]
+            // },
             {
                 test: /\.less$/,
                 // use: ['style-loader', 'css-loader', 'sass-loader']

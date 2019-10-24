@@ -4,7 +4,7 @@ import request from 'utils/request'
 import { requestTuijianList, receiveTuijianList } from 'hooksRudecer/tuijian'
 import {ReducerBoxContext, ReducerBoxReducer} from 'hooksRudecer'
 
-import './index.scss'
+import './index.less'
 export const SongItemListContext = createContext({
     image: '',
     playlistName: '',
