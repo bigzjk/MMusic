@@ -46,7 +46,20 @@ const request = (paramInfo: any) => {
     }
 
     if (!Array.isArray(paramInfo)) {
-        return axios(getDataFn(paramInfo))
+        return new Promise((resolve, reject) => {
+            axios(getDataFn(paramInfo)).then(resp => {
+                let result = {
+                    data: resp.data,
+                    statusInfo: {
+                        code: resp.status,
+                        msg: resp.statusText,
+                    },
+                }
+                resolve(result)
+            }).catch(err => {
+                reject(err)
+            })
+        })
     } else {
         let fetchArray = paramInfo.map(v => {
             return axios(getDataFn(v))

@@ -30,7 +30,7 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
         port: 3003,
-        host: '0.0.0.0',
+        host: 'localhost',
         overlay: true,
         hot: true,
         historyApiFallback: true,

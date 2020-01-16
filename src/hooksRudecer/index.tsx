@@ -1,12 +1,14 @@
 import React, { createContext, useReducer } from 'react'
 import { RECEIVE_TUIJIANLIST } from './tuijian'
 import { RECEIVE_HOT_KEYWORD } from './hotKeyword'
+import { RECEIVE_SEARCHWORD } from './searchResult'
 import { RECEIVER_DETAIL } from './detail'
 
 // 初始化state值
 let initState = {
     tuijianList: [],
     keywordList: [],
+    searchList: [],
     detailState: {
         detailList: [],
         detailHead: [],
@@ -34,6 +36,13 @@ export const ReducerBoxReducer =  props => {
                 let keywordList = action.keywordList.data.result.results
                 return Object.assign({}, state, {
                     keywordList: keywordList,
+                })
+            }
+            // 搜索结果页
+            case RECEIVE_SEARCHWORD: {
+                let searchList = action.searchList
+                return Object.assign({}, state, {
+                    searchList: searchList,
                 })
             }
             // 详情
