@@ -10,7 +10,7 @@ import Search from "./search";
 import Detail from "./detail";
 import SearchResult from "./searchResult";
 import Test from "./test";
-import './common.less'
+import './common1.scss'
 const routes = () => (
   <div className="primary-layout">
     <main>

@@ -11,7 +11,7 @@ const SearchBox = (props) => {
         </ReducerBoxReducer>
     )
 }
-const InpBox = () => {
+const InpBox = (props) => {
     let [searchVal, setSearchVal] = useState('')
     const handleChange = (e) => {
         let val = e.target.value
@@ -19,18 +19,20 @@ const InpBox = () => {
     }
 
     const handleSubmit = () => {
-        console.log(searchVal);
         searchVal = encodeURIComponent(searchVal)
-        console.log('searchVal', searchVal)
-        request({
-            url: '/scr_search_tag?rows=20&type=2&keyword=' + searchVal,
-        })
+        props.history.push(`/searchResult?keyword=${searchVal}`)
+    }
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleSubmit()
+        }
     }
 
     return (
         <div className="InpBox">
             <div className="left_con">
-                <input id="researchBox" placeholder="输入收缩" value={searchVal} onChange={handleChange} type="text" />
+                <input id="researchBox" placeholder="输入搜索词~" value={searchVal} onChange={handleChange} onKeyDown={handleKeyDown} type="text" />
                 <img alt="" className="search-img" src="http://mcontent.10086.cn/web/fs/media/p/154/353/11161/image/20180627/1341438.png" />
                 <span className="submit" onClick={handleSubmit} >搜索</span>
             </div>
@@ -56,6 +58,7 @@ const Hotkeyword = (props) => {
         })
     }, [])
     const { keywordList } = state
+    console.log('keywordList', keywordList);
     return (
         <div className="Hotkeyword">
             <ul>
@@ -63,9 +66,8 @@ const Hotkeyword = (props) => {
                     <li
                         key={item.contentId}
                         onClick={() => {
-                            props.history.push({pathname: '/searchResult', query: {
-                                keyword: item.txtData.txtCotent,
-                                }})
+                            let keyword = encodeURIComponent(item.txtData.txtCotent)
+                            props.history.push(`/searchResult?keyword=${keyword}`)
                         }}
                     >{item.txtData.txtCotent}</li>
                 )) : null}
@@ -76,7 +78,7 @@ const Hotkeyword = (props) => {
 export default function Search(props) {
     return (
         <div className="Search">
-            <InpBox />
+            <InpBox {...props} />
             <SearchBox {...props} />
         </div>
     )

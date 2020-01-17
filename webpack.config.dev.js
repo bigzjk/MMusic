@@ -63,32 +63,29 @@ module.exports = {
                 enforce: "pre",
                 loader: "source-map-loader" 
             },
-            // "node-sass": "^4.12.0",
-            // "sass-loader": "^7.1.0",
-
-            // {
-            //     test: /\.(scss|css)$/,
-            //     use: [
-            //         MiniCssExtractPlugin.loader,
-            //         'css-loader',
-            //         'sass-loader',
-            //         {
-            //             loader: 'postcss-loader',
-            //             options: {
-            //                 plugins: () => [
-            //                     require('autoprefixer')({
-            //                         overrideBrowserslist: ['last 2 version', '>0.1%']
-            //                     }),
-            //                     require('postcss-pxtorem')({
-            //                         rootValue: 100,
-            //                         propWhiteList: [],
-            //                         // minPixelValue:2,
-            //                       })
-            //                 ]
-            //             }
-            //         }
-            //     ]
-            // },
+            {
+                test: /\.(scss|css)$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => [
+                                require('autoprefixer')({
+                                    overrideBrowserslist: ['last 2 version', '>0.1%']
+                                }),
+                                require('postcss-pxtorem')({
+                                    rootValue: 100,
+                                    propWhiteList: [],
+                                    // minPixelValue:2,
+                                  })
+                            ]
+                        }
+                    }
+                ]
+            },
             {
                 test: /\.less$/,
                 use: [

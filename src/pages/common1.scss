@@ -191,7 +191,9 @@ body {
 .flex-wrap {
     display: flex;
 }
-
+.flex-between{
+    justify-content: space-between;
+}
 .flex1 {
     flex: 1
 }

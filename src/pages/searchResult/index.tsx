@@ -16,7 +16,7 @@ function SearchResultBox(props) {
 
 function SearchResult(props) {
     const {dispatch, state} = useContext(ReducerBoxContext)
-
+    let [isload, setIsload] = useState(false)
     let url = props.location.search
     let queryInfo = queryString.parse(url)
     let { keyword } = queryInfo
@@ -26,6 +26,7 @@ function SearchResult(props) {
         request({
             url: '/scr_search_tag?rows=20&type=2&keyword=' + keyword,
         }).then((resp: any) => {
+            setIsload(true)
             let keyList = resp.data.musics
             dispatch(receiveSearchWord(keyList))
         })
@@ -35,9 +36,20 @@ function SearchResult(props) {
     console.log('searchLi1111st', searchList);
     return (
         <div className="SearchResult">
-            {searchList.length > 0 ? searchList.map(item => (
-                <li key={item.copyrightId}>{item.albumName}</li>
-            )) : null}
+            {
+            isload ?
+                searchList && searchList.length > 0 ? searchList.map(item => (
+                    <li className="item flex-wrap " key={item.copyrightId}>
+                        <div className="item-box"><img src={item.cover} alt=""/></div>
+                        <div className="flex1 item-info">
+                            <h3>{item.songName}</h3>
+                            <p>{item.singerName}</p>
+                        </div>
+                    </li>
+                )) :
+                <div>暂无数据。。。。</div>
+                : null
+            }
         </div>
     )
 }
